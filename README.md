@@ -182,7 +182,9 @@ Subscribe to our YouTube channel for tutorials on:
 - Production Architecture
 
 ▶ YouTube:  
-https://youtube.com/@javashark
+<a href="https://youtube.com/@javashark" target="_blank" rel="noopener noreferrer">
+  ▶ Subscribe on YouTube @JavaShark
+</a>
 
 ---
 
@@ -191,7 +193,9 @@ https://youtube.com/@javashark
 Short videos, backend tips, AI tutorials, and development content:
 
 📸 Instagram:  
-https://instagram.com/javashark_
+<a href="https://instagram.com/javashark_" target="_blank" rel="noopener noreferrer">
+  📸 Follow on Instagram @Javashark_
+</a>
 
 ---
 
@@ -199,7 +203,9 @@ https://instagram.com/javashark_
 
 Visit our official website:
 
-https://www.javashark.in
+<a href="https://www.javashark.in" target="_blank" rel="noopener noreferrer">
+  🌐 Visit Official Website
+</a>
 
 ---
 
