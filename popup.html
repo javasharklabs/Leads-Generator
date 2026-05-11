@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg0: #030712;
+      --bg1: #0c1222;
+      --surface: rgba(17, 24, 39, 0.72);
+      --stroke: rgba(148, 163, 184, 0.14);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #2dd4bf;
+      --accent-dim: rgba(45, 212, 191, 0.15);
+      --maps: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%);
+      --jd: linear-gradient(135deg, #fb923c 0%, #ea580c 55%, #c2410c 100%);
+      --glow: 0 0 40px rgba(45, 212, 191, 0.12);
+      --radius: 14px;
+      --radius-sm: 10px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      width: 340px;
+      margin: 0;
+      padding: 0;
+      font-family: "Outfit", system-ui, sans-serif;
+      background: var(--bg0);
+      color: var(--text);
+      min-height: 100%;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -40%;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(45, 212, 191, 0.18), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(56, 189, 248, 0.1), transparent 50%),
+        radial-gradient(ellipse 50% 30% at 50% 110%, rgba(251, 146, 60, 0.06), transparent 45%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      padding: 20px 18px 22px;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(45, 212, 191, 0.2), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(45, 212, 191, 0.35);
+      box-shadow: var(--glow);
+    }
+
+    .brand-mark svg { display: block; }
+
+    .brand h2 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      background: linear-gradient(90deg, #f8fafc 0%, #99f6e4 45%, #5eead4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .brand .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--stroke);
+    }
+
+    .input-group { margin-bottom: 16px; }
+
+    .input-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-sm);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]::placeholder { color: #64748b; }
+
+    input[type="text"]:focus {
+      border-color: rgba(45, 212, 191, 0.5);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    .btn-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 10px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
+    }
+
+    #mapsBtn { background: var(--maps); box-shadow: 0 4px 16px rgba(20, 184, 166, 0.25); }
+    #jdBtn { background: var(--jd); box-shadow: 0 4px 16px rgba(234, 88, 12, 0.22); }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    button:active { transform: translateY(0); }
+
+    .console-box {
+      display: none;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(3, 7, 18, 0.85);
+      border: 1px solid var(--stroke);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.65rem;
+      line-height: 1.5;
+      color: #5eead4;
+      min-height: 72px;
+      overflow: hidden;
+    }
+
+    #loader-bar {
+      height: 3px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0d9488, #2dd4bf, #5eead4);
+      width: 0%;
+      transition: width 0.12s ease-out;
+    }
+
+    #status-text {
+      display: none;
+      margin-top: 6px;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #5eead4;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 14c2-4 6-6 10-6 3 0 5 1 6 3" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round"/>
+          <path d="M2 12h4l2-3 2 6 3-8 3 5h6" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>JavaShark</h2>
+      <span class="tag">Leads generator</span>
+    </header>
+
+    <div class="input-group">
+      <label for="filename">Project / CSV name</label>
+      <input type="text" id="filename" placeholder="e.g. Doctors_Delhi" value="JavaShark_Leads" autocomplete="off">
+    </div>
+
+    <div class="btn-group">
+      <button type="button" id="mapsBtn">Google Maps</button>
+      <button type="button" id="jdBtn">JustDial</button>
+    </div>
+
+    <div class="console-box" id="console">
+      <div id="log-text">System ready…</div>
+      <div id="loader-bar"></div>
+    </div>
+
+    <div id="status-text"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
