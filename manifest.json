@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "JavaShark Leads Ultra",
-  "version": "3.0",
-  "description": "Premium multi-platform lead extractor for JavaShark.",
+  "name": "Java Shark Scraper",
+  "version": "1.0",
+  "description": "Scraping Leads from Google Maps and Justdial",
   "content_security_policy": {
     "extension_pages": "script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'self'"
   },
-  "permissions": ["activeTab", "scripting"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
   "action": {
     "default_popup": "popup.html"
   },
